@@ -20,7 +20,11 @@ async function run() {
     // Query for a movie that has the title 'Back to the Future'
     //const timequery = { time: '18:55' };
     //const dayquery={days: ["6"]};
-    const filterParams={time:'18:55', days: 5}
+    const dateTime = new Date();
+    let timeFilter = str(dateTime.getHours()) + str(dateTime.getMinutes());
+    let dayFilter = dateTime.getDay()
+    const filterParams={timeFilter, dayFilter}
+    console.log("FilterParams", filterParams);
     //const notificationDetail = await notifications.findOne(timequery);
     const notificationDetail = await notifications.findOne(filterParams);
 
